@@ -1,0 +1,5 @@
+specification,eligible_n,pareto_count,baseline_overlap_count,baseline_retention,jaccard_with_baseline,frontier_ids
+baseline_three_objective,103,23,23,1.0,1.0,4 7 8 19 25 28 33 35 36 49 50 67 68 83 84 88 90 97 98 100 101 102 103
+cement_strength_only,103,10,10,0.435,0.435,4 7 25 35 49 50 84 90 100 101
+cement_strength_slump_ge_10,84,10,10,0.435,0.435,8 19 35 36 50 68 84 90 98 102
+cement_strength_slump_ge_20,63,8,8,0.348,0.348,19 35 36 50 68 84 98 102
