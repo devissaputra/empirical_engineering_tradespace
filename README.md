@@ -1,5 +1,8 @@
 # Empirical Engineering Design Trade Space: Concrete Slump Experiments
 
+[![CI](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/ci.yml/badge.svg)](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/ci.yml)
+[![Empirical source rebuild](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/empirical-rebuild.yml/badge.svg)](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/empirical-rebuild.yml)
+
 > **Empirical Research Bundle** · **Portfolio Track: Engineering Management Research** · Systems Engineering / Trade-Space Analysis / Decision Analysis
 
 Empirical multi-objective trade-space analysis of 103 UCI concrete slump experiments using an explicit Pareto frontier.
