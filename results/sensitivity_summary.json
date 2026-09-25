@@ -1,0 +1,47 @@
+{
+  "study": "Empirical Engineering Design Trade Space: Concrete Slump Experiments",
+  "purpose": "Test whether the observed decision set depends on treating slump as an optimization objective.",
+  "interpretation_note": "The 10 cm and 20 cm slump cutoffs are analytical sensitivity thresholds, not universal engineering requirements.",
+  "specifications": [
+    {
+      "specification": "baseline_three_objective",
+      "description": "Minimize cement; maximize slump and 28-day strength.",
+      "eligible_n": 103,
+      "pareto_count": 23,
+      "frontier_ids": [4, 7, 8, 19, 25, 28, 33, 35, 36, 49, 50, 67, 68, 83, 84, 88, 90, 97, 98, 100, 101, 102, 103],
+      "baseline_overlap_count": 23,
+      "baseline_retention": 1.0,
+      "jaccard_with_baseline": 1.0
+    },
+    {
+      "specification": "cement_strength_only",
+      "description": "Minimize cement and maximize 28-day strength; slump is not an objective.",
+      "eligible_n": 103,
+      "pareto_count": 10,
+      "frontier_ids": [4, 7, 25, 35, 49, 50, 84, 90, 100, 101],
+      "baseline_overlap_count": 10,
+      "baseline_retention": 0.435,
+      "jaccard_with_baseline": 0.435
+    },
+    {
+      "specification": "cement_strength_slump_ge_10",
+      "description": "Minimize cement and maximize strength among observations with slump >= 10 cm.",
+      "eligible_n": 84,
+      "pareto_count": 10,
+      "frontier_ids": [8, 19, 35, 36, 50, 68, 84, 90, 98, 102],
+      "baseline_overlap_count": 10,
+      "baseline_retention": 0.435,
+      "jaccard_with_baseline": 0.435
+    },
+    {
+      "specification": "cement_strength_slump_ge_20",
+      "description": "Minimize cement and maximize strength among observations with slump >= 20 cm.",
+      "eligible_n": 63,
+      "pareto_count": 8,
+      "frontier_ids": [19, 35, 36, 50, 68, 84, 98, 102],
+      "baseline_overlap_count": 8,
+      "baseline_retention": 0.348,
+      "jaccard_with_baseline": 0.348
+    }
+  ]
+}
