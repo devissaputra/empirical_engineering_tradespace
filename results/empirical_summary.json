@@ -1,0 +1,16 @@
+{
+  "study": "Empirical Engineering Design Trade Space: Concrete Slump Experiments",
+  "headline_metrics": {
+    "n_experiments": 103,
+    "cement_mean": 229.89,
+    "strength_mean_mpa": 36.04,
+    "slump_mean_cm": 18.05,
+    "pareto_count": 23,
+    "pareto_fraction": 0.223,
+    "max_strength_mpa": 58.53,
+    "min_cement_kg_m3": 137.0
+  },
+  "finding": "Twenty-three of 103 observed experiments are non-dominated under the stated three-objective rule. The frontier includes both very high-strength mixes and much lower-cement mixes, so a single-score ranking would erase genuine trade-offs.",
+  "source": "UCI Concrete Slump Test",
+  "retrieved": "2026-09-25"
+}

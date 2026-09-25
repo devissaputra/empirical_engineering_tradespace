@@ -1,0 +1,15 @@
+{
+  "study_title": "Empirical Engineering Design Trade Space: Concrete Slump Experiments",
+  "design": "Secondary multi-objective analysis of 103 laboratory mixture experiments",
+  "retrieved_for_analysis": "2026-09-25",
+  "source_name": "UCI Concrete Slump Test",
+  "source_page": "https://archive.ics.uci.edu/dataset/182/concrete%2Bslump%2Btest",
+  "direct_data_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/slump/slump_test.data",
+  "doi": "10.24432/C5FG7D",
+  "license_note": "CC BY 4.0; dataset DOI 10.24432/C5FG7D.",
+  "raw_data_redistributed": false,
+  "derived_empirical_results_in_repository": true,
+  "claim_boundary": "This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.",
+  "repository_slug": "empirical_engineering_tradespace",
+  "supersedes_prototype_slug": "robust_architecture_tradespace"
+}

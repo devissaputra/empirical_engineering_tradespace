@@ -1,0 +1,10 @@
+[project]
+name = "empirical-engineering-tradespace"
+version = "1.0.0"
+description = "Multi-objective empirical trade-space analysis of 103 real concrete mixture experiments."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
