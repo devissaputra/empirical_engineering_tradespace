@@ -1,38 +1,84 @@
 # Empirical Study Protocol
 
-## Study
-Empirical Engineering Design Trade Space: Concrete Slump Experiments
+## Study title
+
+**Empirical Engineering Design Trade Space: Concrete Slump Experiments**
+
+## Study type
+
+Secondary, deterministic, multiobjective analysis of a public laboratory dataset.
+
+This document records the released protocol. It is not a preregistration.
 
 ## Research questions
-1. Which observed alternatives are non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
-2. How stable is that decision set when slump is removed as an objective or treated as an eligibility threshold?
 
-## Design and source
-Secondary multi-objective analysis of 103 laboratory mixture experiments from the UCI Concrete Slump Test dataset. Analysis/retrieval date: 2026-09-25.
+**RQ1.** Which observed mixtures are non dominated when cement is minimized while slump and 28 day compressive strength are maximized?
 
-## Primary operationalization
-The baseline minimizes cement and maximizes both slump and 28-day compressive strength. An observation is Pareto-efficient only when no other observed mixture is at least as good on all three objectives and strictly better on at least one.
+**RQ2.** How much does the observed efficient set change when slump is removed as an objective or represented as an eligibility threshold?
+
+## Data
+
+Source: UCI Concrete Slump Test, DOI 10.24432/C5FG7D.
+
+Unit of analysis: one laboratory mixture experiment.
+
+Released sample: all 103 observations.
+
+Missingness: no imputation is used. The baseline includes all 103 observations.
+
+## Baseline operationalization
+
+For observation i, define the objective vector as:
+
+- minimize cement content;
+- maximize slump;
+- maximize 28 day compressive strength.
+
+Observation a dominates observation b when a is no worse than b on all three objectives and strictly better on at least one.
+
+The baseline estimand is the set of observed experiment IDs that are not dominated under this rule.
 
 ## Sensitivity operationalizations
-Three alternative specifications test dependence on the treatment of slump:
 
-1. minimize cement and maximize strength, with slump omitted as an objective;
-2. the same two objectives among observations with slump >= 10 cm;
-3. the same two objectives among observations with slump >= 20 cm.
+The analysis then changes the role of slump while leaving the observed data unchanged.
 
-The two thresholds are analytical robustness probes, not universal design requirements.
+1. Minimize cement and maximize strength; omit slump from the objective vector.
+2. Apply the same two objectives after restricting eligibility to slump ≥ 10 cm.
+3. Apply the same two objectives after restricting eligibility to slump ≥ 20 cm.
 
-## Primary empirical result
-Twenty-three of 103 observed experiments (22.3%) are non-dominated under the baseline rule.
+The thresholds are robustness probes. They are not asserted to be universal engineering requirements.
 
-## Sensitivity result
-The baseline frontier is not invariant to the operationalization of slump. Omitting slump as an objective yields a 10-point frontier with 43.5% retention of the baseline frontier. Requiring slump >= 10 cm also yields 10 points with 43.5% baseline retention. Requiring slump >= 20 cm yields 8 points with 34.8% baseline retention.
+## Comparison metrics
 
-## Interpretation
-The sensitivity result strengthens the study's engineering-management interpretation: a trade space is partly defined by its objectives and constraints. The analysis therefore reports a decision set conditional on declared preferences rather than a universal optimum.
+For each specification the release reports:
 
-## Validity and claim boundary
-This is an empirical trade-space demonstration, not a concrete design recommendation. Durability, cost, safety, uncertainty, curing conditions, and project-specific workability targets are not modeled.
+- eligible sample size;
+- frontier size;
+- overlap count with the baseline frontier;
+- baseline retention, defined as overlap divided by baseline frontier size;
+- Jaccard similarity, defined as intersection divided by union;
+- exact frontier experiment IDs.
 
-## Reproducibility status
-The repository packages the complete objective table, the baseline frontier, deterministic sensitivity outputs, study-specific analysis functions, an internet-enabled source rebuild, evidence hashes, and tests for computational and scientific invariants. The released analysis was documented after dataset selection and must not be represented as preregistered.
+## Released findings
+
+The baseline frontier contains 23 of 103 observations, or 22.3%.
+
+The alternative frontiers contain 10, 10, and 8 observations. They retain 43.5%, 43.5%, and 34.8% of the baseline frontier respectively.
+
+## Interpretation rule
+
+The project treats Pareto efficiency as conditional on the declared decision model. It does not convert frontier membership into a recommendation without an additional preference model and application specific constraints.
+
+## Validity boundaries
+
+The model does not include cost, lifecycle carbon, durability, safety factors, measurement uncertainty, curing conditions, constructability, codes, or stakeholder utility.
+
+Cement content is not equivalent to carbon or cost. Slump is context dependent and is intentionally stress tested rather than assumed to be a universal utility dimension.
+
+The analysis describes observed alternatives only. It does not generate new mixtures, fit a predictive surrogate, or estimate causal effects.
+
+## Reproducibility
+
+The repository packages the complete objective table, exact baseline frontier, sensitivity outputs, analysis functions, public source rebuild, integrity hashes, tests, and deterministic figure generation.
+
+The scientific report in `REPORT.md` is the primary narrative interpretation of this protocol.
