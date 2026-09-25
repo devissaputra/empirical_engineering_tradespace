@@ -21,6 +21,7 @@ Release files (excluding generated test caches):
 - `assets/method.svg`
 - `assets/research_design.svg`
 - `data/README.md`
+- `data/derived/objective_observations.csv`
 - `data/derived/primary_results.csv`
 - `data/source_manifest.json`
 - `docs/analysis_plan.md`
@@ -37,4 +38,5 @@ Release files (excluding generated test caches):
 - `results/empirical_summary.json`
 - `run_demo.py`
 - `scripts/fetch_and_analyze.py`
+- `scripts/generate_figures.py`
 - `tests/test_model.py`
