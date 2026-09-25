@@ -1,52 +1,71 @@
 # Final QA Report
 
-**Research bundle status: PASS.**  
-**Current CI status: PASS.**  
-**Current empirical source rebuild status: PASS.**  
-**GitHub About/topics remain repository-UI metadata and are recorded in `GITHUB_METADATA.md`.**
+## Release verdict
 
-## Repairs completed
-- fixed literal `\\n` artifacts in the README bundle list;
-- added an executed sensitivity analysis rather than a future-work note;
-- added exact alternative frontier IDs, overlap, baseline retention, and Jaccard similarity;
-- added `results/sensitivity_summary.json` and `data/derived/sensitivity_results.csv`;
-- added `scripts/run_sensitivity.py --check`;
-- expanded scientific tests to cover the sensitivity specifications;
-- added a fifth empirical SVG figure for robustness results;
-- updated the figure generator to reproduce five figures;
-- added SHA-256 protection for packaged objective and sensitivity evidence;
-- added raw-source SHA-256 reporting on every public-source rebuild;
-- expanded the literature positioning for trade-space and concrete multi-objective optimization;
-- strengthened the research questions and paper blueprint around operationalization sensitivity;
-- removed the stale reference to the deleted `student_grade_regression` repository;
-- synchronized README, protocol, research design, data dictionary, reproducibility guide, manifest, citation metadata, and bundle definition;
-- upgraded the bundle version to 1.1.0.
+**Status: PASS for a reproducible portfolio research package.**
 
-## Primary numerical verification
-- source experiments represented offline: **103**
-- baseline Pareto-efficient experiments: **23**
-- baseline Pareto fraction: **0.223**
-- exact baseline frontier-ID agreement: **PASS**
+This QA document verifies consistency. It is not the scientific report. The paper facing narrative is in [REPORT.md](REPORT.md).
 
-## Sensitivity verification
-- baseline three-objective frontier: **23**
-- cement + strength only: **10**
-- cement + strength, slump >= 10 cm: **10**
-- cement + strength, slump >= 20 cm: **8**
-- baseline retention across alternatives: **0.435, 0.435, 0.348**
+## Scope checked
 
-## GitHub-hosted verification
-The robustness-enhanced bundle passed both workflows on the merged main commit:
+The release was checked for agreement across:
 
-- **CI / test:** PASS
-- **Empirical source rebuild / rebuild-check:** PASS
+- public source identity and license metadata;
+- packaged objective observations;
+- baseline Pareto frontier;
+- sensitivity specifications;
+- machine readable results;
+- analysis code;
+- tests;
+- continuous integration;
+- reproducibility instructions;
+- figures;
+- README and scientific report claims;
+- paper blueprint and research design;
+- validity and integrity statements.
 
-The CI verifies scientific invariants, packaged sensitivity outputs, bundle validation, and figure generation. The source rebuild fetches the public UCI dataset and checks the released headline metrics and baseline frontier against the live source.
+## Numerical consistency
 
-## Interpretation
-The robustness analysis shows that the decision set depends materially on the way slump is operationalized. The repository therefore treats frontier membership as conditional on declared objectives and constraints rather than as a universal engineering optimum.
+| Check | Released value | Status |
+|---|---:|---|
+| Total observations | 103 | PASS |
+| Baseline frontier count | 23 | PASS |
+| Baseline frontier fraction | 0.223 | PASS |
+| Cement and strength frontier | 10 | PASS |
+| Slump ≥ 10 cm frontier | 10 | PASS |
+| Slump ≥ 20 cm frontier | 8 | PASS |
+| Exact baseline frontier IDs | 23 IDs | PASS |
+| Packaged objective table hash | pinned | PASS |
+| Packaged sensitivity table hash | pinned | PASS |
 
-## Remaining GitHub UI metadata
-Set the repository About text and topics to the values in `GITHUB_METADATA.md`. No repository file can substitute for those GitHub UI fields.
+## Scientific consistency
 
-No open research, code, data, test, CI, reproducibility, or documentation defect remains in this QA report.
+The documentation now uses one consistent interpretation: frontier membership is conditional on the declared objectives and constraints. No document presents a Pareto efficient observation as a universal optimum.
+
+The role of slump is explicitly treated as a modeling choice. The 10 cm and 20 cm thresholds are described only as analytical stress tests. They are not described as field standards.
+
+Cement content is described as a material intensity variable, not as a direct estimate of cost or lifecycle carbon.
+
+## Evidence chain
+
+1. `scripts/fetch_and_analyze.py` downloads the UCI source and recomputes the released baseline metrics.
+2. `data/derived/objective_observations.csv` provides the complete offline objective table.
+3. `research/model.py` implements the dominance rules and bundle validation.
+4. `scripts/run_sensitivity.py --check` recomputes all four specifications.
+5. `results/*.json` and `data/derived/*.csv` store deterministic released outputs.
+6. `scripts/generate_figures.py` regenerates the study figures from packaged evidence.
+7. Tests verify exact frontier IDs, sensitivity counts, and release invariants.
+
+## Presentation repairs completed
+
+- replaced the portfolio explanation with cleaner prose without dash punctuation;
+- replaced the portfolio Report MD target with a real scientific `REPORT.md`;
+- rebuilt the trade space figure with labeled axes, scale ticks, a frontier legend, and a quantitative caption;
+- rebuilt the method figure into a research pipeline that distinguishes source validation, baseline analysis, sensitivity analysis, and interpretation;
+- expanded the scientific report, protocol, research design, analysis plan, data notes, reproducibility guide, and manuscript blueprint;
+- strengthened the distinction between empirical evidence and engineering recommendation;
+- retained explicit provenance, licensing, and non preregistration statements.
+
+## Remaining limitations
+
+A PASS means the repository is internally coherent and reproducible for its stated scope. It does not mean the study is peer reviewed, publication accepted, externally validated, or sufficient for field concrete design.
