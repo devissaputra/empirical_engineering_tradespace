@@ -1,8 +1,8 @@
 # Final QA Report
 
-**Research bundle status: PASS after robustness upgrade.**  
-**GitHub Actions status before this upgrade: PASS.**  
-**Post-upgrade workflows must pass on the new commit before this report should be treated as a green release.**  
+**Research bundle status: PASS.**  
+**Current CI status: PASS.**  
+**Current empirical source rebuild status: PASS.**  
 **GitHub About/topics remain repository-UI metadata and are recorded in `GITHUB_METADATA.md`.**
 
 ## Repairs completed
@@ -26,7 +26,7 @@
 - source experiments represented offline: **103**
 - baseline Pareto-efficient experiments: **23**
 - baseline Pareto fraction: **0.223**
-- exact baseline frontier-ID agreement: **required**
+- exact baseline frontier-ID agreement: **PASS**
 
 ## Sensitivity verification
 - baseline three-objective frontier: **23**
@@ -35,11 +35,18 @@
 - cement + strength, slump >= 20 cm: **8**
 - baseline retention across alternatives: **0.435, 0.435, 0.348**
 
+## GitHub-hosted verification
+The robustness-enhanced bundle passed both workflows on the merged main commit:
+
+- **CI / test:** PASS
+- **Empirical source rebuild / rebuild-check:** PASS
+
+The CI verifies scientific invariants, packaged sensitivity outputs, bundle validation, and figure generation. The source rebuild fetches the public UCI dataset and checks the released headline metrics and baseline frontier against the live source.
+
 ## Interpretation
 The robustness analysis shows that the decision set depends materially on the way slump is operationalized. The repository therefore treats frontier membership as conditional on declared objectives and constraints rather than as a universal engineering optimum.
 
 ## Remaining GitHub UI metadata
 Set the repository About text and topics to the values in `GITHUB_METADATA.md`. No repository file can substitute for those GitHub UI fields.
 
-## Release condition
-The upgraded bundle is ready when the new CI and empirical-source rebuild runs both complete successfully.
+No open research, code, data, test, CI, reproducibility, or documentation defect remains in this QA report.
