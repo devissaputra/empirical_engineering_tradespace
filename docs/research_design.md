@@ -1,20 +1,35 @@
 # Research Design
 
-## Research question
-What engineering alternatives remain non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
+## Research questions
+1. Which observed alternatives remain non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
+2. How sensitive is that observed decision set to alternative treatment of slump?
 
 ## Design
-Secondary multi-objective analysis of 103 laboratory mixture experiments.
+Secondary multi-objective analysis of 103 laboratory mixture experiments from the UCI Concrete Slump Test dataset.
 
-## Source and unit of analysis
-Source: UCI Concrete Slump Test. The operational unit follows the public dataset and is documented in `data/source_manifest.json` and `docs/data_dictionary.md`.
+## Unit of analysis
+One laboratory mixture experiment.
 
-## Hypotheses
-1. H1: the observed design space contains multiple non-dominated mixtures rather than one universally best mixture.
-2. H2: low-cement and high-strength alternatives occupy different parts of the frontier, demonstrating a genuine engineering trade-off.
+## Baseline objectives
+- minimize cement;
+- maximize slump;
+- maximize 28-day compressive strength.
 
-## Method
-Parse all 103 experiments, define three explicit objectives (minimize cement; maximize slump; maximize 28-day strength), and identify an observation as Pareto-efficient only when no other observed mixture is at least as good on all three objectives and strictly better on at least one.
+## Sensitivity logic
+Because higher slump is not universally preferable, the study evaluates whether the baseline frontier is robust to three alternative operationalizations:
+- omit slump and optimize only cement and strength;
+- require slump >= 10 cm, then optimize cement and strength;
+- require slump >= 20 cm, then optimize cement and strength.
+
+These thresholds are analytical stress tests, not universal engineering standards.
+
+## Robustness metrics
+Each alternative specification reports:
+- eligible sample size;
+- Pareto-frontier size;
+- overlap count with the baseline frontier;
+- baseline retention fraction;
+- Jaccard similarity with the baseline frontier.
 
 ## Validity boundary
-This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.
+The results describe this dataset under declared objectives and constraints. They do not establish a field-ready concrete mix, causal effects, or universal preference ordering. Durability, cost, safety, uncertainty, curing conditions, and project-specific acceptance criteria are outside the model.
