@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/empirical-rebuild.yml"
       - "scripts/fetch_and_analyze.py"
+      - "scripts/run_sensitivity.py"
       - "research/model.py"
       - "data/derived/**"
       - "results/**"
@@ -23,3 +24,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: python scripts/fetch_and_analyze.py --check
+      - run: python scripts/run_sensitivity.py --check
