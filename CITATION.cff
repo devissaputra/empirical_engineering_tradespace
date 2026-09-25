@@ -1,17 +1,18 @@
 cff-version: 1.2.0
-message: "If you use this empirical research bundle, cite this repository and the primary dataset/source documented in docs/references.md."
+message: "If you use this systems engineering research package, cite this repository and the primary dataset documented in docs/references.md."
 title: "Empirical Engineering Design Trade Space: Concrete Slump Experiments"
 type: software
 authors:
   - family-names: Saputra
     given-names: Devis W.
-version: 1.1.0
+version: 1.2.0
 date-released: 2026-09-25
 license: MIT
 repository-code: "https://github.com/devissaputra/empirical_engineering_tradespace"
 keywords:
   - systems-engineering
   - engineering-management
+  - trade-space-analysis
   - decision-analysis
   - pareto-frontier
   - sensitivity-analysis
