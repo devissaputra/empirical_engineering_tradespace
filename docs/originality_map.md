@@ -1,18 +1,49 @@
-# Originality Map
+# Originality and Positioning Map
 
-## Closest portfolio neighbors
-The nearest methodological neighbors are general ML/analytics repositories such as `pca_clustering`, `anomaly_detection`, and other empirical modeling projects. None uses this repository's combination of observed engineering alternatives, explicit Pareto dominance, and operationalization sensitivity.
+## What this repository is
 
-## Why this bundle is distinct
-This project is a systems-engineering and engineering-management trade-study artifact, not a prediction benchmark. Its primary output is a decision set of non-dominated observed alternatives, followed by a robustness analysis showing how frontier membership changes when the decision model changes.
+A reproducible observed alternative trade study that measures how Pareto frontier membership changes when the decision model changes.
 
-## Five-axis distinctness test
-The bundle is distinct on:
-1. **Unit of analysis:** laboratory concrete-mixture experiments;
-2. **Decision question:** observed engineering trade-space membership;
-3. **Empirical source:** UCI Concrete Slump Test;
-4. **Method family:** exact Pareto dominance plus sensitivity analysis;
-5. **Primary output:** baseline and alternative non-dominated decision sets.
+## What this repository is not
 
-## Meaning of “original”
-Originality here means a materially distinct contribution within this portfolio and a transparent recombination of established research methods. It does not claim that Pareto analysis, concrete optimization, or trade-space exploration was invented in this repository.
+It is not:
+
+- a new Pareto algorithm;
+- a concrete mix design standard;
+- a predictive machine learning benchmark;
+- a surrogate based optimization engine;
+- a claim of globally optimal concrete mixtures.
+
+## Position relative to nearby literature
+
+Concrete multiobjective studies often train predictive models and search a broader design space for candidate mixtures. This repository instead keeps the 103 observed laboratory alternatives fixed and changes only the decision formulation.
+
+That design creates a different research object: **operationalization sensitivity of an observed engineering trade space**.
+
+## Distinctive combination
+
+The project combines:
+
+1. a named public laboratory dataset;
+2. exact Pareto dominance over observed alternatives;
+3. explicit separation between objective and constraint roles for slump;
+4. frontier stability measures across four formulations;
+5. exact frontier membership release;
+6. source rebuild and evidence hash checks;
+7. a strict field recommendation boundary.
+
+## Portfolio distinctness
+
+Within the portfolio, this repository is distinct on five dimensions:
+
+- **unit of analysis:** laboratory concrete mixture experiments;
+- **decision problem:** engineering trade space membership;
+- **source:** UCI Concrete Slump Test;
+- **method:** exact Pareto dominance plus operationalization sensitivity;
+- **output:** alternative observed efficient sets rather than predictions.
+
+## Appropriate originality claim
+
+The defensible claim is that the repository provides a transparent and reproducible empirical framing of objective definition sensitivity for this dataset.
+
+Do not claim that Pareto analysis, concrete optimization, or trade space exploration was invented here.
