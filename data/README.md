@@ -1,11 +1,10 @@
 # Data
 
-**Primary source:** UCI Concrete Slump Test
+This repository does not silently republish the raw UCI source file. Source identity, license, retrieval information, and integrity policy are recorded in `source_manifest.json`.
 
-**Source page:** https://archive.ics.uci.edu/dataset/182/concrete%2Bslump%2Btest
+## Packaged derived evidence
+- `derived/objective_observations.csv`: complete 103-row table containing the three variables used by the baseline and sensitivity analyses.
+- `derived/primary_results.csv`: complete 23-point baseline Pareto frontier.
+- `derived/sensitivity_results.csv`: complete robustness summary across four operationalizations.
 
-**Reuse note:** CC BY 4.0; dataset DOI 10.24432/C5FG7D.
-
-Raw source observations are not bundled here by default. Derived tables are packaged under `data/derived/`; their completeness or subset status is stated in `docs/data_dictionary.md`.
-
-**Construct boundary:** This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.
+The complete objective and sensitivity tables are protected by SHA-256 values recorded in `source_manifest.json`.
