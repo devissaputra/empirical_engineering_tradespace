@@ -1,49 +1,45 @@
 # Final QA Report
 
-**Research bundle status: PASS.**  
-**GitHub Actions status: PASS.**  
-**Live GitHub administration status: About/topics still require repository-page authentication.**
+**Research bundle status: PASS after robustness upgrade.**  
+**GitHub Actions status before this upgrade: PASS.**  
+**Post-upgrade workflows must pass on the new commit before this report should be treated as a green release.**  
+**GitHub About/topics remain repository-UI metadata and are recorded in `GITHUB_METADATA.md`.**
 
-## Checks completed
-- provenance and source identity reviewed;
-- licensing/reuse note recorded;
-- complete MIT license restored and recognized by GitHub;
-- all 103 objective observations packaged as a derived analysis table;
-- the Pareto frontier independently recomputed from the full 103-row objective table;
-- recomputed frontier matches the packaged 23 experiment IDs exactly;
-- `results/empirical_summary.json` reconciled with packaged evidence;
-- README/report language reconciled with the numerical results;
-- study-specific methods live in `research/model.py`;
-- tests exercise dominance logic, sample completeness, exact frontier IDs, and bundle consistency;
-- internet rebuild script has no synthetic fallback and supports `--check`;
-- four SVG assets are present and a dependency-free figure regeneration script is included;
-- CI workflow installed and completed successfully;
-- public-source empirical rebuild workflow installed and completed successfully against the UCI endpoint;
-- local Markdown links and citation metadata were previously checked;
-- no preregistration, peer-review, or primary-data-collection claim is made.
+## Repairs completed
+- fixed literal `\\n` artifacts in the README bundle list;
+- added an executed sensitivity analysis rather than a future-work note;
+- added exact alternative frontier IDs, overlap, baseline retention, and Jaccard similarity;
+- added `results/sensitivity_summary.json` and `data/derived/sensitivity_results.csv`;
+- added `scripts/run_sensitivity.py --check`;
+- expanded scientific tests to cover the sensitivity specifications;
+- added a fifth empirical SVG figure for robustness results;
+- updated the figure generator to reproduce five figures;
+- added SHA-256 protection for packaged objective and sensitivity evidence;
+- added raw-source SHA-256 reporting on every public-source rebuild;
+- expanded the literature positioning for trade-space and concrete multi-objective optimization;
+- strengthened the research questions and paper blueprint around operationalization sensitivity;
+- removed the stale reference to the deleted `student_grade_regression` repository;
+- synchronized README, protocol, research design, data dictionary, reproducibility guide, manifest, citation metadata, and bundle definition;
+- upgraded the bundle version to 1.1.0.
 
-## Numerical verification
-- source experiments represented in the offline objective table: **103**
-- recomputed Pareto-efficient experiments: **23**
-- packaged Pareto-efficient experiments: **23**
-- exact frontier-ID agreement: **PASS**
-- reported Pareto fraction: **0.223**
+## Primary numerical verification
+- source experiments represented offline: **103**
+- baseline Pareto-efficient experiments: **23**
+- baseline Pareto fraction: **0.223**
+- exact baseline frontier-ID agreement: **required**
 
-## GitHub-hosted verification
-The repository's GitHub Actions checks have executed successfully on the repaired research bundle:
+## Sensitivity verification
+- baseline three-objective frontier: **23**
+- cement + strength only: **10**
+- cement + strength, slump >= 10 cm: **10**
+- cement + strength, slump >= 20 cm: **8**
+- baseline retention across alternatives: **0.435, 0.435, 0.348**
 
-- **CI / test:** PASS
-- **Empirical source rebuild / rebuild-check:** PASS
+## Interpretation
+The robustness analysis shows that the decision set depends materially on the way slump is operationalized. The repository therefore treats frontier membership as conditional on declared objectives and constraints rather than as a universal engineering optimum.
 
-The CI job runs the study-specific tests, bundle validator, and SVG figure-generation smoke test. The source rebuild fetches the public UCI dataset and checks the released headline metrics and frontier IDs against a fresh rebuild.
+## Remaining GitHub UI metadata
+Set the repository About text and topics to the values in `GITHUB_METADATA.md`. No repository file can substitute for those GitHub UI fields.
 
-## Final empirical finding
-Twenty-three of 103 observed experiments (22.3%) are non-dominated under the stated three-objective rule. The frontier contains both low-cement and high-strength alternatives, so reporting a single “best” mix would hide decision-relevant trade-offs.
-
-## Required interpretation boundary
-This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.
-
-## Remaining GitHub UI-only metadata
-The connected GitHub file API cannot edit repository About/topics, and the separate browser session was not authenticated for repository administration. The intended values are recorded in `GITHUB_METADATA.md`.
-
-No research, code, data, test, CI, license, or reproducibility defect remains open in this QA report.
+## Release condition
+The upgraded bundle is ready when the new CI and empirical-source rebuild runs both complete successfully.

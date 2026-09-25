@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import csv
+import hashlib
 import io
 import json
 import statistics
@@ -13,12 +14,15 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from research.model import pareto_front
+
 URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/slump/slump_test.data"
 
 def fetch_rows():
-    text = urllib.request.urlopen(URL, timeout=30).read().decode("utf-8-sig")
+    payload = urllib.request.urlopen(URL, timeout=30).read()
+    source_sha256 = hashlib.sha256(payload).hexdigest()
+    text = payload.decode("utf-8-sig")
     raw = list(csv.DictReader(io.StringIO(text)))
-    return [
+    rows = [
         {
             "experiment_id": int(float(r["No"])),
             "cement": float(r["Cement"]),
@@ -27,6 +31,7 @@ def fetch_rows():
         }
         for r in raw
     ]
+    return rows, source_sha256
 
 def summarize(rows):
     front = pareto_front(rows)
@@ -56,16 +61,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    rows = fetch_rows()
+
+    rows, source_sha256 = fetch_rows()
     summary, front = summarize(rows)
     payload = {
         "summary": summary,
+        "source_sha256": source_sha256,
         "frontier_experiment_ids": [r["experiment_id"] for r in front],
     }
+
     if args.check:
         packaged = json.loads((ROOT / "results/empirical_summary.json").read_text(encoding="utf-8"))
         if packaged["headline_metrics"] != summary["headline_metrics"]:
             raise SystemExit("FAIL: public-source rebuild differs from packaged headline metrics")
+
         expected_ids = {
             int(r["experiment_id"])
             for r in csv.DictReader(
@@ -74,6 +83,8 @@ def main():
         }
         if expected_ids != set(payload["frontier_experiment_ids"]):
             raise SystemExit("FAIL: public-source frontier differs from packaged frontier")
+
+        print(f"source_sha256: {source_sha256}")
         print("empirical_rebuild: PASS")
     else:
         print(json.dumps(payload, indent=2))

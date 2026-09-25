@@ -1,18 +1,21 @@
 # Research Bundle Definition
 
-This repository is treated as a research bundle because it links one explicit research question to a named empirical source, a documented operationalization, executable analysis code, derived evidence, reproducibility checks, visual evidence, validity boundaries, and a paper-ready interpretation path.
+This repository is a research bundle because one explicit engineering-management question is connected to a named empirical source, declared objectives, executable analysis code, complete derived evidence, sensitivity analysis, reproducibility checks, visual evidence, validity boundaries, and a paper-ready interpretation path.
 
-## Question
-What engineering alternatives remain non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
+## Primary question
+Which observed engineering alternatives remain non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
+
+## Robustness question
+How much does that observed decision set change when slump is omitted as an objective or treated as an eligibility threshold?
 
 ## Empirical core
-Pareto dominance and observed trade-space enumeration.
+Exact Pareto dominance over 103 observed laboratory experiments plus operationalization sensitivity analysis.
 
 ## Main result
-Twenty-three of 103 observed experiments (22.3%) are non-dominated under the stated three-objective rule. The frontier contains both low-cement and high-strength alternatives, so reporting a single “best” mix would hide decision-relevant trade-offs.
+The baseline contains 23 non-dominated observations. Alternative treatment of slump reduces the frontier to 10, 10, and 8 observations across the three declared robustness specifications, with baseline retention ranging from 43.5% to 34.8%.
 
 ## Boundary
-This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.
+The result is conditional on the declared objectives and constraints. It is not a field concrete-design recommendation and does not model durability, cost, safety, uncertainty, curing conditions, or project-specific acceptance rules.
 
 ## Release criterion
-A release passes only if source provenance, code, derived tables, JSON summary, README claims, figures, and tests agree numerically and semantically.
+A release passes only if source provenance, packaged evidence hashes, code, derived tables, JSON summaries, sensitivity outputs, README claims, figures, and tests agree numerically and semantically.

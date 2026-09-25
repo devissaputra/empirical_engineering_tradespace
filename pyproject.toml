@@ -1,7 +1,7 @@
 [project]
 name = "empirical-engineering-tradespace"
-version = "1.0.0"
-description = "Multi-objective empirical trade-space analysis of 103 real concrete mixture experiments."
+version = "1.1.0"
+description = "Reproducible empirical trade-space and sensitivity analysis of 103 concrete mixture experiments."
 requires-python = ">=3.10"
 dependencies = []
 

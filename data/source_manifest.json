@@ -9,7 +9,12 @@
   "license_note": "CC BY 4.0; dataset DOI 10.24432/C5FG7D.",
   "raw_data_redistributed": false,
   "derived_empirical_results_in_repository": true,
-  "claim_boundary": "This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.",
+  "integrity": {
+    "raw_source_sha256_policy": "Computed and printed on every public-source rebuild. A fixed upstream digest is not asserted because the UCI endpoint may be corrected; research-relevant drift is guarded by exact metric and frontier-ID checks.",
+    "objective_observations_sha256": "b582a525bbfc3c7e94dde77e67deb4b824d311e9a906430d1440300421683b4c",
+    "sensitivity_results_sha256": "5f690a97e9b496bcccc4276369dbc18eb5896296f42620243ce4d287f6651c4b"
+  },
+  "claim_boundary": "This is an empirical trade-space demonstration, not a concrete design recommendation. Frontier membership is conditional on the declared objectives and constraints; durability, cost, safety, uncertainty, curing conditions, and project-specific requirements are not modeled.",
   "repository_slug": "empirical_engineering_tradespace",
   "supersedes_prototype_slug": "robust_architecture_tradespace"
 }
