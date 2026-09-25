@@ -1,19 +1,29 @@
 # GitHub Metadata
 
 ## Portfolio track
+
 **Engineering Management Research**
 
+## Research area
+
+**Systems Engineering · Trade Space Analysis · Decision Analysis**
+
 ## Repository slug
+
 `empirical_engineering_tradespace`
 
 ## About
-Reproducible engineering trade-space study of 103 concrete experiments with Pareto and sensitivity analysis.
+
+Observed engineering trade space study of 103 concrete experiments with Pareto frontier and objective sensitivity analysis.
 
 ## Suggested topics
-engineering-management, systems-engineering, trade-space-analysis, decision-analysis, pareto-frontier, sensitivity-analysis, multi-objective-analysis, design-tradeoffs, empirical-research, reproducible-research
+
+systems-engineering, engineering-management, trade-space-analysis, decision-analysis, pareto-frontier, sensitivity-analysis, multi-objective-analysis, design-tradeoffs, empirical-research, reproducible-research
 
 ## Optional website
+
 https://devissaputra.github.io/
 
-## Classification rule
-This repository belongs to the **Engineering Management Research** track in the eight-repository empirical research portfolio.
+## Presentation rule
+
+On the portfolio site, present this project under **Research in System Engineering**. The repository remains part of the Engineering Management Research portfolio track.
