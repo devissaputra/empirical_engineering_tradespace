@@ -3,80 +3,89 @@
 [![CI](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/ci.yml/badge.svg)](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/ci.yml)
 [![Empirical source rebuild](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/empirical-rebuild.yml/badge.svg)](https://github.com/devissaputra/empirical_engineering_tradespace/actions/workflows/empirical-rebuild.yml)
 
-> **Empirical Research Bundle** · **Portfolio Track: Engineering Management Research** · Systems Engineering / Trade-Space Analysis / Decision Analysis
+> **System Engineering Research Package** · Engineering Management Research · Trade Space Analysis · Decision Analysis
 
-A reproducible secondary study of 103 UCI concrete-slump experiments. The repository uses observed laboratory alternatives to examine Pareto-efficient design choices and then tests how the decision set changes when slump is operationalized differently.
-
-![Empirical workflow](assets/architecture.svg)
-
-## Study status
-
-**Completed secondary empirical analysis with sensitivity analysis.** Reported findings were calculated from the named public source on 25 September 2026. The public-source rebuild has no synthetic fallback. `data/source_manifest.json` records provenance, licensing, retrieval information, and the evidence-integrity policy.
-
-## Research questions
-
-1. Which observed alternatives are non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
-2. How stable is that observed decision set when slump is removed as an optimization objective or treated as an eligibility threshold instead?
-
-## Design
-
-- **Design:** Secondary multi-objective analysis of 103 laboratory mixture experiments
-- **Source:** UCI Concrete Slump Test
-- **Dataset DOI:** 10.24432/C5FG7D
-- **Source page:** https://archive.ics.uci.edu/dataset/182/concrete%2Bslump%2Btest
-- **Direct data endpoint:** `https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/slump/slump_test.data`
-- **Retrieval / analysis date:** 2026-09-25
-- **License reported by UCI:** CC BY 4.0
-
-## Primary analysis
-
-The baseline specification minimizes cement and maximizes both slump and 28-day compressive strength. An observation is Pareto-efficient when no other observed mixture is at least as good on all three objectives and strictly better on at least one.
-
-![Method](assets/method.svg)
-
-### Primary finding
-
-Twenty-three of 103 observed experiments (22.3%) are non-dominated under the baseline three-objective rule. The frontier spans materially different cement, workability, and strength profiles, so a single weighted ranking would suppress decision-relevant trade-offs.
-
-### Headline metrics
-
-- **Experiments:** 103
-- **Mean cement:** 229.89 kg/m³
-- **Mean 28-day strength:** 36.04 MPa
-- **Mean slump:** 18.05 cm
-- **Baseline Pareto count:** 23
-- **Baseline Pareto fraction:** 0.223
-- **Maximum observed strength:** 58.53 MPa
-- **Minimum observed cement:** 137.0 kg/m³
+This repository is a reproducible secondary study of 103 concrete mixture experiments from the UCI Concrete Slump Test dataset. It uses observed laboratory alternatives to identify Pareto efficient tradeoffs and then tests how much the decision set changes when the role of slump is changed.
 
 ![Observed trade space](assets/research_design.svg)
 
-## Sensitivity analysis
+## Start here
 
-The baseline treats higher slump as preferable. Because that is not a universal engineering objective, the repository now executes three alternative specifications rather than merely noting this limitation.
+- [Scientific report](REPORT.md)
+- [Empirical study protocol](EMPIRICAL_STUDY.md)
+- [Paper blueprint](docs/paper_blueprint.md)
+- [Research design](docs/research_design.md)
+- [Analysis plan](docs/analysis_plan.md)
+- [Reproducibility guide](REPRODUCIBILITY.md)
+- [Data provenance](data/README.md)
+- [Final QA evidence](QA_REPORT.md)
 
-| Specification | Eligible observations | Pareto count | Baseline retention | Jaccard vs baseline |
-|---|---:|---:|---:|---:|
-| Baseline: minimize cement, maximize slump and strength | 103 | 23 | 1.000 | 1.000 |
-| Minimize cement, maximize strength; slump omitted | 103 | 10 | 0.435 | 0.435 |
-| Same two objectives, restricted to slump ≥ 10 cm | 84 | 10 | 0.435 | 0.435 |
-| Same two objectives, restricted to slump ≥ 20 cm | 63 | 8 | 0.348 | 0.348 |
+## Research questions
 
-The sensitivity result is substantive: the observed frontier changes considerably when the role of slump changes. That means the decision set is **operationalization-dependent**, which is exactly why objective definitions must be explicit in engineering trade-space work. The 10 cm and 20 cm cutoffs are analytical thresholds used to probe robustness; they are **not** presented as universal concrete-design requirements.
+1. Which observed alternatives are non dominated when cement is minimized while slump and 28 day compressive strength are maximized?
+2. How stable is that frontier when slump is omitted as an objective or treated as an eligibility threshold?
+
+## Empirical source
+
+| Item | Value |
+|---|---|
+| Dataset | UCI Concrete Slump Test |
+| Instances | 103 laboratory experiments |
+| DOI | 10.24432/C5FG7D |
+| License | CC BY 4.0 |
+| Analysis date | 25 September 2026 |
+| Synthetic fallback | None |
+
+The packaged release contains the complete objective table needed for offline verification while the internet enabled workflow can rebuild the headline findings from the public UCI source.
+
+## Baseline formulation
+
+The baseline minimizes cement and maximizes slump and 28 day compressive strength. An observation is Pareto efficient when no other observed experiment is at least as good on every declared objective and strictly better on at least one.
+
+![Analysis workflow](assets/method.svg)
+
+## Headline results
+
+| Metric | Value |
+|---|---:|
+| Experiments | 103 |
+| Mean cement | 229.89 kg/m³ |
+| Mean slump | 18.05 cm |
+| Mean 28 day strength | 36.04 MPa |
+| Baseline frontier | 23 observations |
+| Baseline frontier fraction | 22.3% |
+| Maximum observed strength | 58.53 MPa |
+| Minimum observed cement | 137.0 kg/m³ |
+
+The result should be read as a set of observed tradeoffs, not as one recommended concrete mixture.
+
+## Sensitivity to the treatment of slump
+
+| Specification | Eligible n | Frontier n | Baseline retained |
+|---|---:|---:|---:|
+| Baseline, three objectives | 103 | 23 | 100.0% |
+| Cement and strength only | 103 | 10 | 43.5% |
+| Cement and strength with slump ≥ 10 cm | 84 | 10 | 43.5% |
+| Cement and strength with slump ≥ 20 cm | 63 | 8 | 34.8% |
+
+The alternative frontiers are much smaller than the baseline frontier. In this dataset, the efficient set therefore depends materially on how workability enters the decision model.
 
 ![Sensitivity analysis](assets/sensitivity.svg)
 
-## What this study can and cannot claim
+## What is new in this repository
 
-**Can claim:** the repository reproducibly identifies non-dominated observations in the named UCI dataset under four declared operationalizations and quantifies how much the resulting decision sets overlap.
+The contribution is not a new Pareto algorithm and not a new concrete design standard. The repository provides a transparent observed alternative trade study with four features:
 
-**Cannot claim:** the results prescribe a concrete mix for field use. Durability, cost, safety, uncertainty, project-specific workability targets, curing conditions, and other engineering constraints are not modeled. The sensitivity thresholds are analytical probes rather than design standards.
+1. exact Pareto analysis over real laboratory alternatives rather than synthetic candidates;
+2. explicit separation between objectives and eligibility constraints;
+3. frontier membership sensitivity quantified with overlap, retention, and Jaccard similarity;
+4. evidence integrity checks that connect the public source, packaged tables, code, figures, and released claims.
 
-![Finding and boundary](assets/evaluation.svg)
+## Claim boundary
+
+This analysis does not prescribe a field ready mix. It does not model cost, embodied carbon, durability, safety factors, curing conditions, uncertainty, constructability, or project specific acceptance rules. Cement is not a complete environmental proxy, and larger slump is not assumed to be universally preferable outside the baseline stress test.
 
 ## Reproduce
-
-Offline verification of the packaged empirical results:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -85,38 +94,34 @@ python run_demo.py
 python scripts/run_sensitivity.py --check
 ```
 
-Recompute the primary empirical analysis from the public source:
+With internet access:
 
 ```bash
 python scripts/fetch_and_analyze.py --check
 ```
 
-Regenerate all five SVG figures:
+Regenerate the figures:
 
 ```bash
 python scripts/generate_figures.py
 ```
 
-The public-source rebuild computes a SHA-256 digest of the retrieved source bytes and reports it in the run output. Research-relevant source drift is additionally guarded by exact checks on the released headline metrics and baseline frontier IDs. The packaged objective table is independently hashed in `data/source_manifest.json`.
+## Repository map
 
-## Research bundle contents
-
-- `README.md` — study overview, primary findings, sensitivity results, and claim boundaries
-- `EMPIRICAL_STUDY.md` — protocol, operationalization, robustness analysis, validity, and interpretation
-- `data/source_manifest.json` — source provenance, license note, evidence-integrity policy, and packaged-data checksum
-- `data/derived/objective_observations.csv` — all 103 observations used for offline frontier recomputation
-- `data/derived/primary_results.csv` — complete 23-point baseline Pareto frontier
-- `data/derived/sensitivity_results.csv` — complete robustness summary across four specifications
-- `results/empirical_summary.json` — machine-readable primary results
-- `results/sensitivity_summary.json` — machine-readable sensitivity results
-- `scripts/fetch_and_analyze.py` — public-source rebuild and source-consistency check
-- `scripts/run_sensitivity.py` — deterministic robustness recomputation and packaged-output check
-- `scripts/generate_figures.py` — dependency-free generation of five study-specific SVG figures
-- `research/model.py` — reusable dominance, frontier, validation, and sensitivity functions
-- `tests/` — behavioral, empirical-invariant, and sensitivity-regression tests
-- `docs/` — analysis plan, research design, data dictionary, paper blueprint, references, and originality map
-- `assets/` — five study-specific SVG figures
+- `REPORT.md`: paper facing scientific report
+- `EMPIRICAL_STUDY.md`: protocol, operationalization, findings, and validity
+- `docs/paper_blueprint.md`: manuscript structure and writing plan
+- `docs/analysis_plan.md`: estimands, decision rules, and release outputs
+- `docs/research_design.md`: research design and inference boundaries
+- `docs/data_dictionary.md`: variable and output definitions
+- `data/source_manifest.json`: source identity, license, and integrity hashes
+- `data/derived/`: objective table, baseline frontier, and sensitivity table
+- `results/`: machine readable released results
+- `research/model.py`: dominance and validation logic
+- `scripts/`: source rebuild, sensitivity analysis, and figure generation
+- `tests/`: behavioral and scientific invariant tests
+- `QA_REPORT.md`: release verification evidence
 
 ## Research integrity
 
-This bundle distinguishes **source data**, **operationalization**, **result**, **sensitivity**, and **interpretation**. The analysis plan documents the released analysis and is **not a preregistration**. The study is a secondary analysis of public data, not primary data collection, peer review, or external validation.
+This is a documented secondary analysis, not a preregistration. It is not presented as peer reviewed or externally validated. Claims are intentionally limited to the named dataset and declared decision rules.
