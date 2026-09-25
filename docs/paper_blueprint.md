@@ -1,25 +1,32 @@
 # Paper Blueprint
 
 ## Working title
-Empirical Engineering Design Trade Space: Concrete Slump Experiments
+Operationalization-Sensitive Trade-Space Analysis of Concrete Slump Experiments
 
 ## Motivation
-Engineering design decisions are often multi-objective: improving one performance dimension can consume more material or degrade another. The concrete slump experiments provide observed alternatives on which an explicit Pareto rule can be evaluated without inventing a weighted score.
+Engineering trade spaces do not exist independently of the objectives used to define them. A design can appear non-dominated under one preference structure and disappear from the frontier under another. The UCI Concrete Slump Test dataset provides 103 observed laboratory alternatives that allow this dependence to be examined transparently without generating synthetic design points.
 
-## Research question
-What engineering alternatives remain non-dominated when cement is minimized while slump and 28-day compressive strength are maximized?
+## Research questions
+1. Which observed mixtures are non-dominated when cement is minimized while slump and 28-day strength are maximized?
+2. How stable is that frontier when slump is omitted as an objective or treated as an eligibility threshold?
 
-## Data and method
-Parse all 103 experiments, define three explicit objectives (minimize cement; maximize slump; maximize 28-day strength), and identify an observation as Pareto-efficient only when no other observed mixture is at least as good on all three objectives and strictly better on at least one.
+## Data
+UCI Concrete Slump Test, 103 experiments. Dataset DOI: 10.24432/C5FG7D.
+
+## Method
+The primary analysis computes the exact observed Pareto frontier for three objectives. Sensitivity analyses recompute frontiers under three alternative specifications and compare frontier membership using overlap, retention, and Jaccard similarity.
 
 ## Results to report
-Twenty-three of 103 observed experiments (22.3%) are non-dominated under the stated three-objective rule. The frontier contains both low-cement and high-strength alternatives, so reporting a single “best” mix would hide decision-relevant trade-offs. Report the packaged headline metrics and the full relevant derived table; do not cherry-pick only the strongest contrast.
+- baseline frontier: 23 of 103 observations (22.3%);
+- cement + strength only: 10 frontier points, 43.5% baseline retention;
+- cement + strength with slump >= 10 cm: 10 frontier points, 43.5% retention;
+- cement + strength with slump >= 20 cm: 8 frontier points, 34.8% retention.
 
-## Robustness / sensitivity
-The released frontier is computed from all 103 observed mixtures using one declared three-objective rule: minimize cement while maximizing slump and 28-day strength. Every reported frontier point is checked for pairwise non-domination. Adding flow, cost, durability, uncertainty, or application-specific constraint thresholds would define a different trade space and should be reported as a separate sensitivity analysis.
+## Interpretation
+The main methodological result is not that one concrete mixture is best. It is that the observed efficient set depends materially on how workability is represented in the decision model. This supports an engineering-management argument for explicit objective elicitation and sensitivity analysis before design alternatives are ranked or selected.
 
 ## Limitations
-This is an empirical trade-space demonstration, not a concrete design recommendation. Maximizing slump is an analytical objective here, not a universal engineering requirement; application-specific constraints, durability, cost, safety, and uncertainty are not modeled.
+The analysis is descriptive and secondary. It does not model cost, embodied carbon, durability, uncertainty, curing conditions, field constructability, or stakeholder utility. The slump thresholds are analytical probes rather than standards.
 
 ## Publication integrity
-Do not describe this repository as peer reviewed, preregistered, or externally validated unless those events actually occur. Distinguish analysis of public data from original data collection.
+Do not describe this repository as peer reviewed, preregistered, externally validated, or based on original data collection unless those events actually occur.
