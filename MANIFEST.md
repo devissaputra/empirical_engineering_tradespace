@@ -1,6 +1,6 @@
 # Manifest
 
-Release files (excluding generated test caches):
+Release files excluding generated test caches:
 
 - `.github/workflows/ci.yml`
 - `.github/workflows/empirical-rebuild.yml`
@@ -15,6 +15,7 @@ Release files (excluding generated test caches):
 - `PORTFOLIO_TRACK.md`
 - `QA_REPORT.md`
 - `README.md`
+- `REPORT.md`
 - `REPRODUCIBILITY.md`
 - `RESEARCH_BUNDLE.md`
 - `assets/architecture.svg`
