@@ -22,4 +22,5 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pytest -q
       - run: python run_demo.py
+      - run: python scripts/run_sensitivity.py --check
       - run: python scripts/generate_figures.py --out-dir /tmp/generated_figures
