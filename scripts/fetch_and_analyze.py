@@ -6,10 +6,13 @@ import json
 import statistics
 import urllib.request
 from pathlib import Path
-
-from research.model import pareto_front
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from research.model import pareto_front
 URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/concrete/slump/slump_test.data"
 
 def fetch_rows():
