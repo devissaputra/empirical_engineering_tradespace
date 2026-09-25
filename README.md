@@ -77,16 +77,16 @@ Recompute the empirical analysis from the public source (internet required):
 python scripts/fetch_and_analyze.py
 ```
 
-The online rebuild calls study-specific functions from `research/model.py`; the tests exercise those functions and scientific invariants rather than only checking file presence.
+The online rebuild calls study-specific functions from `research/model.py`; the offline test suite recomputes the Pareto frontier from all 103 packaged objective observations and checks the exact 23 frontier IDs. Figures can be regenerated with `python scripts/generate_figures.py`.
 
 ## Research bundle contents
 
 - `README.md` — study overview and bounded findings
 - `EMPIRICAL_STUDY.md` — protocol, validity, and interpretation
 - `data/source_manifest.json` — provenance, license note, and claim boundary
-- `data/derived/` — compact derived empirical tables
+- `data/derived/objective_observations.csv` — all 103 objective observations used for offline frontier recomputation\n- `data/derived/primary_results.csv` — the complete 23-point Pareto frontier
 - `results/empirical_summary.json` — machine-readable headline results
-- `scripts/fetch_and_analyze.py` — public-source rebuild
+- `scripts/fetch_and_analyze.py` — public-source rebuild and source-consistency check\n- `scripts/generate_figures.py` — dependency-free SVG figure regeneration
 - `research/model.py` — reusable study-specific analysis functions
 - `tests/` — behavioral and scientific-invariant tests
 - `docs/` — analysis plan, data dictionary, paper blueprint, references, originality map
