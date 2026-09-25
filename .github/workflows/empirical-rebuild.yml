@@ -2,6 +2,14 @@ name: Empirical source rebuild
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/empirical-rebuild.yml"
+      - "scripts/fetch_and_analyze.py"
+      - "research/model.py"
+      - "data/derived/**"
+      - "results/**"
 
 permissions:
   contents: read
