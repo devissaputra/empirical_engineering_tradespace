@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Saputra
     given-names: Devis W.
+version: 1.1.0
 date-released: 2026-09-25
 license: MIT
 repository-code: "https://github.com/devissaputra/empirical_engineering_tradespace"
@@ -13,6 +14,7 @@ keywords:
   - engineering-management
   - decision-analysis
   - pareto-frontier
-  - multi-objective-optimization
+  - sensitivity-analysis
+  - multi-objective-analysis
   - empirical-study
   - reproducible-research
